@@ -1,6 +1,6 @@
 #include <alloca.h>
 #include <inttypes.h>
-#include </home/matthew/janet/janet.h>
+#include <janet.h>
 #include <stdio.h>
 #include <mysql/mysql.h>
 #include <string.h>
