@@ -27,6 +27,17 @@
   (peg/match peg s))
 
 (defn pkg-config [what]
+  (def f (os/spawn ["pkg-config" what] :p {:out :pipe}))
+  (def v (->>
+           (:read (f :out) :all)
+           (string/trim)
+           shsplit))
+  (unless (zero? (os/proc-wait f))
+    (error "pkg-config failed!"))
+  (os/proc-close f)
+  v)
+
+(defn zpkg-config [what]
   (print what)
   (def f (file/open (string "pkg-config " what)))
   (def v (->>
