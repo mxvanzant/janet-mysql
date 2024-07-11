@@ -27,6 +27,7 @@
   (peg/match peg s))
 
 (defn pkg-config [what]
+  (print what)
   (def f (os/spawn ["pkg-config" what] :p {:out :pipe}))
   (def v (->>
            (:read (f :out) :all)
