@@ -27,6 +27,9 @@
   (peg/match peg s))
 
 (defn pkg-config [what]
+  "-lmysqlclient")
+
+(defn zzpkg-config [what]
   (print what)
   (def f (os/spawn ["pkg-config" what] :p {:out :pipe}))
   (def v (->>
