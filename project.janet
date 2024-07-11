@@ -27,6 +27,7 @@
   (peg/match peg s))
 
 (defn pkg-config [what]
+  (print what)
   (def f (file/open (string "pkg-config " what)))
   (def v (->>
            (file/read f :all)
